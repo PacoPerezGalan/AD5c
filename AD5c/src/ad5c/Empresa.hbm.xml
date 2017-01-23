@@ -1,24 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 15-ene-2017 21:05:06 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 23-ene-2017 17:49:08 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="ad5a.Empresa" table="EMPRESA">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="increment" />
-        </id>
-        <property name="CIF" type="java.lang.String">
+    <class name="ad5c.Empresa" table="EMPRESA">
+        <id name="cif" type="java.lang.String" access="field">
             <column name="CIF" />
-        </property>
+            <generator class="assigned" />
+        </id>
         <property name="nombre" type="java.lang.String">
             <column name="NOMBRE" />
         </property>
         <property name="empleados" type="int">
             <column name="EMPLEADOS" />
         </property>
-        <property name="direccion" type="java.lang.String">
-            <column name="DIRECCION" />
-        </property>
+        <list name="pedidos" table="PEDIDO" inverse="true" cascade="save-update">
+            <key>
+                <column name="CIF" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="ad5c.Pedido" />
+        </list>
+        <one-to-one name="direccion" class="ad5c.Direccion" cascade="save-update"/>
+            
     </class>
 </hibernate-mapping>

@@ -1,29 +1,29 @@
 package ad5c;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Empresa {
-	int id;
-	String CIF;
+	String cif;
 	String nombre;
 	int empleados;
-	String direccion;
+	List<Pedido> pedidos=new ArrayList<Pedido>();
+	Direccion direccion;
+	
+	public Empresa(){
+		setDireccion(new Direccion("Hernandez Lazaro","Albal",46470));
+	}
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public int getId() {
-		return id;
+	public String getCif() {
+		return cif;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getCIF() {
-		return CIF;
-	}
-	public void setCIF(String cIF) {
-		CIF = cIF;
+	public void setCIF(String cif) {
+		this.cif = cif;
 	}
 	public int getEmpleados() {
 		return empleados;
@@ -31,10 +31,23 @@ public class Empresa {
 	public void setEmpleados(int empleados) {
 		this.empleados = empleados;
 	}
-	public String getDireccion() {
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	public void addPedido(Pedido p){
+		p.setEmpresa(this);
+		pedidos.add(p);
+	}
+	
+	public Direccion getDireccion() {
 		return direccion;
 	}
-	public void setDireccion(String direccion) {
+	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
+		direccion.setEmpresa(this);
 	}
 }

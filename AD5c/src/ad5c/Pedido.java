@@ -9,7 +9,11 @@ import java.util.Set;
 public class Pedido {
 	int id;
 	Date fecha;
+	Empresa empresa;
 	
+	public Pedido(Date f){
+		fecha=f;
+	}
 
 	public int getId() {
 		return id;
@@ -23,5 +27,12 @@ public class Pedido {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+	
 	
 }

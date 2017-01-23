@@ -20,15 +20,12 @@ public class Program {
 		Empresa e=new Empresa();
 		e.setCIF("E12345678");
 		e.setNombre("Apple");
-		e.setDireccion("Calle Carlos Ferris");
+		//e.setDireccion("Calle Carlos Ferris");
 		e.setEmpleados(45);
+		e.addPedido(new Pedido(new Date(System.currentTimeMillis() ) ) );
+		e.addPedido(new Pedido(new Date(System.currentTimeMillis() ) ) );
 		session.save(e);
 			
-		Pedido p=new Pedido();
-		p.setFecha(new Date(System.currentTimeMillis()));
-		
-		session.save(p);
-		
 		
 		session.getTransaction().commit();
 		//
@@ -37,11 +34,14 @@ public class Program {
 		session.beginTransaction();
 		
 		Empresa em=session.get(Empresa.class, 1);
-		System.out.println("Hem recuperat de Empresa: "+em.getNombre()+" "+em.getCIF()+" "+em.getDireccion()+" "+em.getEmpleados());
+		System.out.println("Hem recuperat de Empresa: "+em.getNombre()+" "+em.getCif()+" "+em.getEmpleados());
 		
-		Pedido pe=session.get(Pedido.class, 1);
-		System.out.println("Hem recuperat de Pedido: "+pe.getFecha());
 		
+		for(Pedido pedido : em.pedidos ){
+			System.out.println("Pedido: "+pedido.getEmpresa()+" "+pedido.getFecha());
+		}
+		
+		System.out.println("Direccion: "+em.getDireccion().getCalle()+" "+em.getDireccion().getCP()+" "+em.getDireccion().getPoblacion());
 		
 		session.getTransaction().commit();
 		//

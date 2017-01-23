@@ -4,13 +4,14 @@
 <hibernate-configuration>
  <session-factory>
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-  <property name="hibernate.connection.url">jdbc:mysql://localhost/AD5c</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost/ad5c</property>
   <property name="hibernate.connection.username">root</property>
   <property name="hibernate.default_schema">AD5a</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
   <property name="hibernate.show_sql">true</property>
   <property name="hibernate.hbm2ddl.auto">create</property>
-  <mapping resource="ad5a/Empresa.hbm.xml"/>
-  <mapping resource="ad5a/Pedido.hbm.xml"/>
+  <mapping resource="ad5c/Empresa.hbm.xml"/>
+  <mapping resource="ad5c/Pedido.hbm.xml"/>
+  <mapping resource="ad5c/Direccion.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>
