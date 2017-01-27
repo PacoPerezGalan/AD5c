@@ -4,7 +4,7 @@
 <!-- Generated 23-ene-2017 17:49:08 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="ad5c.Empresa" table="EMPRESA">
-        <id name="cif" type="java.lang.String" access="field">
+        <id name="cif" type="java.lang.String">
             <column name="CIF" />
             <generator class="assigned" />
         </id>
@@ -14,14 +14,16 @@
         <property name="empleados" type="int">
             <column name="EMPLEADOS" />
         </property>
+        
         <list name="pedidos" table="PEDIDO" inverse="true" cascade="save-update">
             <key>
-                <column name="CIF" />
+                <column name="ID_EMPRESA" />
             </key>
             <list-index></list-index>
             <one-to-many class="ad5c.Pedido" />
         </list>
+        
         <one-to-one name="direccion" class="ad5c.Direccion" cascade="save-update"/>
-            
+        <!--<many-to-one name="direccion" class="Direccion" column="id_direccion" cascade="save-update" unique="true"></many-to-one>--> 
     </class>
 </hibernate-mapping>

@@ -4,7 +4,7 @@ public class Direccion {
 	String calle;
 	String poblacion;
 	int CP;
-	int id;
+	String id;
 	Empresa empresa;
 	public Direccion(String calle,String poblacion,int CP){
 		this.calle=calle;
@@ -29,10 +29,10 @@ public class Direccion {
 	public void setCP(int cP) {
 		CP = cP;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public Empresa getEmpresa() {

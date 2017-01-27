@@ -5,14 +5,14 @@
 <hibernate-mapping>
     <class name="ad5c.Pedido" table="PEDIDO">
         <id name="id" type="int">
-            <column name="ID_Pedido" />
+            <column name="ID" />
             <generator class="increment" />
         </id>
         <property name="fecha" type="java.sql.Date">
             <column name="FECHA" />
         </property>
         <many-to-one name="empresa" class="ad5c.Empresa" not-null="true">
-            <column name="EMPRESA" />
+            <column name="ID_EMPRESA" />
         </many-to-one>
     </class>
 </hibernate-mapping>

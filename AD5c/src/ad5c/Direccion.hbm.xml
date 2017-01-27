@@ -4,7 +4,7 @@
 <!-- Generated 23-ene-2017 18:20:19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="ad5c.Direccion" table="DIRECCION">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.String">
             <column name="ID_Direccion" />
             <generator class="foreign">
             	<param name="property">empresa</param>
@@ -19,6 +19,6 @@
         <property name="CP" type="int">
             <column name="CP" />
         </property>
-        <one-to-one name="empresa" class="ad5c.Empresa" constrained="true"></one-to-one>
+        <one-to-one name="empresa" class="ad5c.Empresa" constrained="true" ></one-to-one>   <!--property-ref=""-->
     </class>
 </hibernate-mapping>
