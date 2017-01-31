@@ -19,6 +19,6 @@
         <property name="CP" type="int">
             <column name="CP" />
         </property>
-        <one-to-one name="empresa" class="ad5c.Empresa" constrained="true" ></one-to-one>   <!--property-ref=""-->
+        <one-to-one name="empresa" class="ad5c.Empresa" constrained="true" ></one-to-one>   <!--constrained no , property-ref="direccion"-->
     </class>
 </hibernate-mapping>
