@@ -3,7 +3,9 @@ package ad5c;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 public class Program {
@@ -46,6 +48,38 @@ public class Program {
 		
 		
 		System.out.println("Direccion: "+em.getDireccion().getCalle()+" "+em.getDireccion().getCP()+" "+em.getDireccion().getPoblacion());
+		
+		session.getTransaction().commit();
+		
+		
+		//CONSULTAS 5d
+		session.beginTransaction();
+		//empresa por cif dado
+		Query q = session.createQuery("from Empresa where CIF='12345678'");
+		
+		List<Empresa> empresas = q.list();
+
+		for (Empresa emp : empresas) {
+			System.out.println(emp.getNombre());
+		}
+		
+		//pedidos por cif de empresa
+		q = session.createQuery("from Pedido where ID_EMPRESA='12345678'");
+		
+		List<Pedido> pedidos = q.list();
+
+		for (Pedido ped : pedidos) {
+			System.out.println("Fecha de pedido "+ped.getId()+": "+ped.getFecha());
+		}
+		
+		//empresas que empiecen por string dado
+		q = session.createQuery("from Empresa where NOMBRE LIKE 'Ap%'");
+		
+		empresas = q.list();
+
+		for (Empresa emp : empresas) {
+			System.out.println(emp.getNombre());
+		}
 		
 		session.getTransaction().commit();
 		
